@@ -1,0 +1,36 @@
+Pin tool 설치
+wget "https://software.intel.com/sites/landingpage/pintool/downloads/pin-3.28-98749-g6643ecee5-gcc-linux.tar.gz"
+
+Pin 폴더 명
+/home/swkang/pin-3.28-98749-g6643ecee5-gcc-linux/
+
+/home/swkang/pin-3.28-98749-g6643ecee5-gcc-linux/source/tools/DramPin/obj-intel64/DramPin.so
+
+/home/swkang/test_app
+
+** ManualExamples
+source/tools/ManualExamples/obj-intel64
+
+
+** test_app 경로
+/home/swkang/test_app
+
+** bash 파일 변경
+vi ~/.bashrc
+
+** Makefile option
+-I -> include file위치
+-l (소문자L) -> linking할 라이브러리
+-L -> 라이브러리가 위치한 경로
+
+DRAMSim2 시뮬레이션 명령어
+./DRAMSim -t ../test_app/mase_pin.trc -s system.ini -d ini/DDR3_micron_8M_8B_x16_sg15.ini -c 10000
+
+DRAMSim -t ./traces/mase_pin.trc -s /home/swkang/DRAMSim2/system.ini -d /home/swkang/DRAMSim2/ini/DDR3_micron_64M_8B_x4_sg15.ini -c 10000
+
+***DRAMSim3
+./build/dramsim3main configs/DDR4_8Gb_x8_3200.ini -c 5000000 -t /home/swkang/pin-3.28-98749-g6643ecee5-gcc-linux/source/tools/DramPin/traces/mase_hello_pin.trc -o ./
+
+
+pin 실행 명령어
+pin -t ./obj-intel64/DramPin.so -- /home/swkang/test_app/hello_s
